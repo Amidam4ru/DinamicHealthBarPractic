@@ -358,9 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b03e42c0bd3074e92e995ebe5aa847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 50
-  _maxValue: 100
-  _minValue: 0
+  <Value>k__BackingField: 50
+  <MinValue>k__BackingField: 0
+  <MaxValue>k__BackingField: 100
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695602910}
   - component: {fileID: 695602911}
+  - component: {fileID: 695602912}
   m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
@@ -543,6 +544,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &695602912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695602909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd56571c558d3343bab57d58609e6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 498582743}
 --- !u!1 &743543625
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +568,7 @@ GameObject:
   - component: {fileID: 743543626}
   - component: {fileID: 743543628}
   - component: {fileID: 743543627}
+  - component: {fileID: 743543629}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -677,6 +692,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743543625}
   m_CullTransparentMesh: 1
+--- !u!114 &743543629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743543625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb609f464b95484e91d86238b574b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 498582743}
 --- !u!1 &774839916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1069,6 @@ GameObject:
   - component: {fileID: 1429760456}
   - component: {fileID: 1429760455}
   - component: {fileID: 1429760454}
-  - component: {fileID: 1429760457}
   m_Layer: 5
   m_Name: MinusHealthButton (1)
   m_TagString: Untagged
@@ -1111,7 +1138,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1429760455}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 498582743}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: TakeDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1429760455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,21 +1189,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429760452}
   m_CullTransparentMesh: 1
---- !u!114 &1429760457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429760452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c6cb137274a7499d2ee1ef07281d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 498582743}
-  _valueOfChange: 10
-  isImprove: 0
 --- !u!1 &1440985571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1276,6 @@ GameObject:
   - component: {fileID: 1442053807}
   - component: {fileID: 1442053806}
   - component: {fileID: 1442053805}
-  - component: {fileID: 1442053808}
   m_Layer: 5
   m_Name: PlusHealthButton
   m_TagString: Untagged
@@ -1322,7 +1345,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1442053806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 498582743}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: IncreaseValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1442053806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,21 +1396,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442053803}
   m_CullTransparentMesh: 1
---- !u!114 &1442053808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442053803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6c6cb137274a7499d2ee1ef07281d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 498582743}
-  _valueOfChange: 10
-  isImprove: 1
 --- !u!1 &1676480910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1824979994}
   - component: {fileID: 1824979995}
+  - component: {fileID: 1824979996}
   m_Layer: 5
   m_Name: SmothHealthSlider
   m_TagString: Untagged
@@ -1541,6 +1562,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1824979996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824979993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46fd0de42898cc4397524f729618e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 498582743}
+  _speedOfChanging: 0.5
 --- !u!1 &1890643092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1585,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890643093}
-  - component: {fileID: 1890643094}
   - component: {fileID: 1890643095}
   m_Layer: 5
   m_Name: 'HealthDisplay '
@@ -1581,23 +1615,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 86.3}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1890643094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890643092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc08c9c9551fdd74f981eb618faeead3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 498582743}
-  _healthText: {fileID: 743543627}
-  _healthSlider: {fileID: 695602911}
-  _smoothHealthSlider: {fileID: 1824979995}
-  _speedOfChanging: 0.5
 --- !u!114 &1890643095
 MonoBehaviour:
   m_ObjectHideFlags: 0

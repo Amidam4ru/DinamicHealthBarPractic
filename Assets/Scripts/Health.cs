@@ -3,27 +3,24 @@ using UnityEngine;
 
 public class Health: MonoBehaviour
 {
-    [SerializeField] private float _value = 100;
-    [SerializeField] [Min(1)] private float _maxValue = 100;
-    [SerializeField] [Min(0)] private float _minValue = 0;
+    [field: SerializeField, Min(0)] public float Value { get; private set; }
+    [field: SerializeField, Min(0)] public float MinValue { get; private set; }
+    [field: SerializeField, Min(1)] public float MaxValue { get; private set; }
 
     public event Action Died;
     public event Action ValueChanged;
 
-    public float Value => _value;
-    public float MinValue => _minValue;
-    public float MaxValue => _maxValue;
 
     private void OnValidate()
     {
-        if (_value > _maxValue)
+        if (Value > MaxValue)
         {
-            _value = _maxValue;
+            Value = MaxValue;
         }
 
-        if (_maxValue <= _minValue)
+        if (MaxValue <= MinValue)
         {
-            _maxValue = _minValue + 1;
+            MaxValue = MinValue + 1;
         }
     }
 
@@ -31,8 +28,8 @@ public class Health: MonoBehaviour
     {
         if (value > 0)
         {
-            _value += value;
-            _value = Math.Clamp(_value, _minValue, _maxValue);
+            Value += value;
+            Value = Math.Clamp(Value, MinValue, MaxValue);
             ValueChanged?.Invoke();
         }
     }
@@ -41,11 +38,11 @@ public class Health: MonoBehaviour
     {
         if (damage > 0)
         {
-            _value -= damage;
-            _value = Math.Clamp(_value, _minValue, _maxValue);
+            Value -= damage;
+            Value = Math.Clamp(Value, MinValue, MaxValue);
             ValueChanged?.Invoke();
 
-            if (_value == _minValue)
+            if (Value == MinValue)
             {
                 Die();
             }
